@@ -5,6 +5,10 @@
 
 void insertOrdered(struct node** list, char name[], int numGuesses) {
     struct node* newNode = (struct node*)malloc(sizeof(struct node));
+    if (newNode == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
     strcpy(newNode->name, name);
     newNode->numGuesses = numGuesses;
     newNode->next = NULL;
