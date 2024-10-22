@@ -3,7 +3,7 @@ Name : Shashwat Raj
 ASU ID : 1230779344
 Course : CSE 220
 Professor : David Claveau
-Assignment : A3
+Assignment : A4
 */
 
 #include <stdio.h>
@@ -11,10 +11,10 @@ Assignment : A3
 #include <string.h>
 #include "slist.h"
 
-#define MAX_WORD_LENGTH 100 // Use define instead of variable
+#define MAX_WORD_LENGTH 100 
 
 void getGuess(const char* wordToGuess, char* guessedWord) {
-    char guess[MAX_WORD_LENGTH + 1]; // Add 1 for null terminator
+    char guess[MAX_WORD_LENGTH + 1]; 
     printf("Guess a letter or the complete word: %s\n", guessedWord);
     scanf("%100s", guess);
 
@@ -74,21 +74,17 @@ int main(int argc, char *argv[]) {
         printf("Bye Bye!\n"); //for quitting.
         return 0;
     } else {
-        struct node* leaderboard = NULL;  // Initialize the leaderboard (linked list)
+        struct node* leaderboard = NULL; 
 
         while (1) {
-            // Get player's name
             char playerName[30];
             printf("Please enter your name to start: ");
             scanf("%29s", playerName);
 
-            // Play the word guessing game and get the number of guesses
             int num_guesses = PlayGuessingGame(argv[1]);
 
-            // Insert the player into the leaderboard
-            insertOrdered(&leaderboard, playerName, num_guesses);
+            insertOrdered(&leaderboard, playerName, numGuesses);
 
-            // Print the top 5 players
             printList_n(leaderboard, 5);
 
             printf("Press 'q' to quit or any other key to play again: ");

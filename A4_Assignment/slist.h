@@ -7,7 +7,7 @@ struct node {
     struct node* next;
 };
 
-// Function declarations for slist.c
+// Function declarations for slist.c as instructed
 void insertOrdered(struct node** list, char name[], int numGuesses);
 void printList_n(struct node* list, int n);
 
