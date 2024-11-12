@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
 
             int num_guesses = PlayGuessingGame(argv[1]);
 
-            insertOrdered(&leaderboard, playerName, numGuesses);
+            insertOrdered(&leaderboard, playerName, num_guesses);
 
             printList_n(leaderboard, 5);
 
