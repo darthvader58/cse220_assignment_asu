@@ -7,6 +7,10 @@ class BinarySearchTree {
 public:
     BinarySearchTree() {root = NULL;}
 
+    /*
+    &k = typename key
+    &v = typename value 
+    */
     void insert(int key, const string& value) {
         Node* temp = new Node(key, value);
         if (isEmpty()) {
@@ -21,8 +25,8 @@ public:
                 } else if (key > current->key) {
                     current = current->right;
                 } else {
-                    current->value = value;  // Overwrite if key exists
-                    delete temp;  // Prevent memory leak
+                    current->value = value;  
+                    delete temp;  
                     return;
                 }
             }
