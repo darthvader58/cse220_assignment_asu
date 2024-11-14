@@ -1,31 +1,25 @@
-// bst.hpp
 #include <iostream>
-#include <string>
-using namespace std;
 
+template <typename K, typename V>
 class BinarySearchTree {
 public:
-    BinarySearchTree() {root = NULL;}
+    BinarySearchTree() : root(nullptr) {}
 
-    /*
-    &k = typename key
-    &v = typename value 
-    */
-    void insert(int key, const string& value) {
+    void insert(const K& key, const V& value) {
         Node* temp = new Node(key, value);
         if (isEmpty()) {
             root = temp;
         } else {
-            Node* current = root;
+            Node* curr = root;
             Node* parent = nullptr;
-            while (current) {
-                parent = current;
-                if (key < current->key) {
-                    current = current->left;
-                } else if (key > current->key) {
-                    current = current->right;
+            while (curr) {
+                parent = curr;
+                if (key < curr->key) {
+                    curr = curr->left;
+                } else if (key > curr->key) {
+                    curr = curr->right;
                 } else {
-                    current->value = value;  
+                    curr->value = value;  
                     delete temp;  
                     return;
                 }
@@ -38,16 +32,16 @@ public:
         }
     }
 
-    bool search(int key, string& value) const {
-        Node* current = root;
-        while (current) {
-            if (key == current->key) {
-                value = current->value;
+    bool search(const K& key, V& value) const {
+        Node* curr = root;
+        while (curr) {
+            if (key == curr->key) {
+                value = curr->value;
                 return true;
-            } else if (key < current->key) {
-                current = current->left;
+            } else if (key < curr->key) {
+                curr = curr->left;
             } else {
-                current = current->right;
+                curr = curr->right;
             }
         }
         return false;
@@ -55,15 +49,16 @@ public:
 
     bool isEmpty() const { return root == nullptr; }
 
-    void print_inorder() const { inorder(root); cout << endl; }
+    void print_inorder() const { inorder(root); std::cout << std::endl; }
 
 private:
     struct Node {
-        int key;
-        string value;
+        K key;
+        V value;
         Node* left;
         Node* right;
-        //Node(int key, const string& value) : key(key), value(value), left(nullptr), right(nullptr) {}
+
+        Node(const K& key, const V& value) : key(key), value(value), left(nullptr), right(nullptr) {}
     };
 
     Node* root;
@@ -71,7 +66,7 @@ private:
     void inorder(Node* node) const {
         if (node) {
             inorder(node->left);
-            cout << node->key << ": " << node->value << " ";
+            std::cout << node->key << ": " << node->value << " ";
             inorder(node->right);
         }
     }
